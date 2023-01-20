@@ -4,7 +4,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use(express.static("publik"));
+app.use(express.static("public"));
 
 const bio = {
     nama :['Nama',':','Hanafi Abdullah'],
