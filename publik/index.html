@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"> 
+    <title>Document</title>
+</head>
+<body>
+    <h1>Biodata Ku</h1>
+    <table>
+        
+    </table>
+    <script>
+        async function tampil(){
+            const rest = await fetch("/api/biodata");
+            const data = await rest.json();
+            console.log(data);
+            const table = document.querySelector('table');
+            for(let isi in data ){
+                console.log(data[isi]);
+
+                const tr = document.createElement("tr");
+                data[isi].forEach((e,i) => {
+                    if(i===0){
+                        const th = document.createElement("th");
+                        th.textContent = e;
+                        tr.appendChild(th);
+                    }else{
+                        const td = document.createElement("td");
+                        td.textContent = e;
+                        tr.appendChild(td);
+                    }
+                });
+                table.appendChild(tr);
+            }
+        }
+
+        tampil();
+    </script>
+</body>
+</html>
